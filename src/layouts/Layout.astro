@@ -1,6 +1,6 @@
 ---
-import '../styles/fonts.css';
-import { userSignal } from '../components/AuthForm';
+import "../styles/fonts.css";
+import { userSignal } from "../components/AuthForm";
 
 interface Props {
   title: string;
@@ -14,19 +14,25 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} - WARLOK</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/assets/images/W.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/assets/images/W.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="/pwa-512x512.png" />
   </head>
   <body>
     <header class="header">
       <a href="/" class="logo">山 W̵a̵r̵l̵o̵k̵</a>
-      <div class="auth-buttons" id="authButtons">
+      <!-- <div class="auth-buttons" id="authButtons">
         <a href="/auth?signup=true" class="auth-button">Sign_Up</a>
         <span class="divider">/</span>
         <a href="/auth?login=true" class="auth-button">Login</a>
-      </div>
+      </div> -->
     </header>
     <main>
       <slot />
@@ -34,12 +40,12 @@ const { title } = Astro.props;
 
     <script>
       // Client-side auth check
-      import { checkAuth } from '../utils/auth';
-      
+      import { checkAuth } from "../utils/auth";
+
       const updateAuthButtons = async () => {
         const isAuthed = await checkAuth();
-        const authButtons = document.getElementById('authButtons');
-        
+        const authButtons = document.getElementById("authButtons");
+
         if (isAuthed && authButtons) {
           authButtons.innerHTML = `
             <div class="profile-menu">
@@ -67,8 +73,8 @@ const { title } = Astro.props;
   body {
     margin: 0;
     background: #000;
-    color: #D9D9D9;
-    font-family: 'Space Mono', monospace;
+    color: #d9d9d9;
+    font-family: "Space Mono", monospace;
     min-height: 100vh;
   }
 
@@ -82,10 +88,10 @@ const { title } = Astro.props;
   }
 
   .logo {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 2rem;
-    color: #D9D9D9;
+    color: #d9d9d9;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -99,8 +105,8 @@ const { title } = Astro.props;
   }
 
   .auth-button {
-    font-family: 'Space Mono', monospace;
-    background-color: #D9D9D9;
+    font-family: "Space Mono", monospace;
+    background-color: #d9d9d9;
     color: #000;
     border: none;
     padding: 8px 16px;
@@ -115,8 +121,8 @@ const { title } = Astro.props;
   }
 
   .divider {
-    color: #D9D9D9;
-    font-family: 'Space Mono', monospace;
+    color: #d9d9d9;
+    font-family: "Space Mono", monospace;
   }
 
   .profile-menu {
@@ -129,7 +135,7 @@ const { title } = Astro.props;
     gap: 8px;
     cursor: pointer;
     text-decoration: none;
-    color: #D9D9D9;
+    color: #d9d9d9;
   }
 
   .avatar {
@@ -142,4 +148,4 @@ const { title } = Astro.props;
     width: 100%;
     min-height: calc(100vh - 80px);
   }
-</style> 
+</style>
