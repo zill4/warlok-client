@@ -1,0 +1,23 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    // Preact specific settings
+    "jsx": "react-jsx",
+    "jsxImportSource": "@webspatial/react-sdk",
+    "types": [
+      "three",
+      "@webgpu/types"
+    ],
+    "paths": {
+      "react": [
+        "preact/compat"
+      ],
+      "react-dom": [
+        "preact/compat"
+      ]
+    }
+  }
+}
