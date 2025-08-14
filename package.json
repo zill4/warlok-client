@@ -4,8 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:avp": "XR_ENV=avp astro dev --port 3001",
     "build": "astro build",
+    "build:avp:web": "XR_ENV=avp astro build",
     "preview": "astro preview",
+    "preview:avp": "XR_ENV=avp astro preview --port 3001",
     "astro": "astro",
     "run:avp": "webspatial-builder run --base=$XR_DEV_SERVER",
     "build:avp": "webspatial-builder build --base=$XR_PRE_SERVER --bundle-id=$XR_BUNDLE_ID --teamId=$XR_TEAM_ID",
