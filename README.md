@@ -8,4 +8,4 @@ HTML wiring: src/layouts/Layout.astro links the manifest, sets theme-color, and 
 To start
 `npm run dev:avp`
 in another terminal run the WebSpatial app shell pointing at deve server
-`XR_DEV_SERVER=http://localhost:4321/webspatial/avp/ npm run run:avp npm run run:avp`
+`XR_DEV_SERVER=http://localhost:5173/webspatial/avp/ npm run run:avp`
