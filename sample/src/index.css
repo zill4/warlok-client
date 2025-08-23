@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme:  dark;
+  background-color: #2a2a2a;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;  
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #2a2a2a;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #2a2a2a; /* Keep dark gray background */
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@layer components {
+  .product-card {
+    @apply bg-gray-400 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:scale-105;
+  }
+
+  .product-image {
+    @apply w-full h-48 object-cover object-center;
+  }
+
+  .product-info {
+    @apply p-4;
+  }
+
+  .product-title {
+    @apply text-lg font-semibold text-gray-800 mb-2 line-clamp-2;
+  }
+
+  .product-price {
+    @apply text-xl font-bold text-indigo-600;
+  }
+
+  .product-description {
+    @apply text-gray-600 mt-2 line-clamp-3;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors;
+  }
+}
+
+html.is-spatial {
+  background-color: #2a2a2a; /* Dark gray background for spatial mode too */
+  --xr-background-material: transparent;
+
+  .main-window {
+    /* @apply bg-none; */
+    background: none;
+    --xr-background-material: transparent;
+    position: relative;
+    top: 70px;
+    margin-left: 40px;
+  }
+
+  .navbar {
+    @apply mx-auto;
+    --xr-background-material: translucent;
+    width: 1000px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    --xr-back: 50;
+    border-radius: 50px;
+  }
+
+  .folded-footer {
+    background: none;
+    --xr-background-material: translucent;
+    border-radius: 50px;
+    --xr-back: 100;
+  }
+  .unfolded-footer {
+    background: none;
+    --xr-background-material: translucent;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    --xr-back: 100;
+    width: 1200px;
+
+    footer {
+      background: none;
+    }
+  }
+
+  .list-window {
+  }
+
+  .list-title {
+    @apply text-gray-100;
+  }
+
+  .list-meun {
+    position: fixed;
+    top: 200px;
+    left: 0;
+    transform-origin: top left;
+    /* transform: translateZ(320px) rotateY(80deg); */
+  }
+
+  .list-meun-bg {
+    background: none;
+    --xr-background-material: translucent;
+
+    button {
+      background: none;
+    }
+  }
+
+  .product-card {
+    background: none;
+    box-shadow: none;
+    --xr-background-material: translucent;
+  }
+
+  .product-title {
+    @apply text-gray-100;
+  }
+  .product-price {
+    @apply text-indigo-400;
+    position: relative;
+    --xr-back: 10;
+    /* top: 0; */
+  }
+  .product-description {
+    @apply text-gray-900;
+  }
+
+  .product-detail {
+    background: none;
+    /* --xr-background-material: translucent; */
+  }
+
+  .product-detail-info {
+    --xr-background-material: translucent;
+    border-radius: 50px;
+    padding: 50px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    --xr-back: 20;
+    margin: auto;
+    width: 400px;
+    transform-origin: top right;
+    transform: translateZ(420px);
+  }
+}
+
+/* 添加自定义网格布局样式 */
+.auto-fill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* 3D Spatial Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotateX(15deg) rotateY(-10deg) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(15deg) rotateY(-10deg) translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
