@@ -230,7 +230,10 @@ const ProductList: FC = () => {
           
           {/* Method 1: Using SpatialDiv with Model3D (Proper Implementation) */}
           <SpatialDiv
-            spatialStyle={{ position: { z: 100 } }}
+            spatialStyle={{ 
+              position: { z: 100 },
+              visible: true 
+            }}
             style={{ 
               width: '400px', 
               height: '300px',
@@ -245,7 +248,7 @@ const ProductList: FC = () => {
               overflow: 'hidden'
             }}
           >
-            {/* WebSpatial Model Component - Works with Apple Vision Pro */}
+            {/* Toyota AE86 GLB Model - WebSpatial + Apple Vision Pro */}
             <Model3DErrorBoundary
               fallback={
                 <div style={{
@@ -277,6 +280,9 @@ const ProductList: FC = () => {
               <Model
                 contentMode="fit"
                 resizable={true}
+                onLoad={(event) => {
+                  console.log('WebSpatial Model loaded successfully!', event);
+                }}
                 style={{
                   width: '150px',
                   height: '150px',
@@ -286,13 +292,10 @@ const ProductList: FC = () => {
                   transform: 'translate(-50%, -50%)',
                   zIndex: 10
                 }}
-                onLoad={(event) => {
-                  console.log('WebSpatial Model loaded successfully!', event);
-                }}
               >
                 <source 
-                  src="/assets/models/black_king.fbx" 
-                  type="model/fbx" 
+                  src="/assets/models/1983-toyota-sprinter-trueno-gt-apex-ae86/source/ae86.glb" 
+                  type="model/gltf-binary" 
                 />
                 {/* Fallback content if model fails to load */}
                 <div style={{
@@ -309,8 +312,8 @@ const ProductList: FC = () => {
                   boxShadow: '0 8px 16px rgba(16, 185, 129, 0.4)',
                   border: '3px solid rgba(255,255,255,0.2)'
                 }}>
-                  <div style={{fontSize: '32px'}}>♔</div>
-                  <div style={{fontSize: '12px', fontWeight: 'bold'}}>Loading King...</div>
+                  <div style={{fontSize: '32px'}}>🚗</div>
+                  <div style={{fontSize: '12px', fontWeight: 'bold'}}>Loading AE86...</div>
                 </div>
               </Model>
             </Model3DErrorBoundary>
@@ -377,7 +380,7 @@ const ProductList: FC = () => {
               padding: '4px 12px',
               borderRadius: '6px'
             }}>
-              ✨ WebSpatial Model + Chess Pieces
+              ✨ Toyota AE86 + Chess Pieces
             </div>
           </SpatialDiv>
 
