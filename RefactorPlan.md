@@ -19,7 +19,7 @@ We’re replacing Astro routing/rendering with a Vite-powered Preact SPA while p
 - Document refactor approach, constraints, and validation checkpoints.
 - Identify incremental stopping points to catch issues early.
 
-### Milestone 1 – New SPA Shell _(Status: In Progress)_
+### Milestone 1 – New SPA Shell _(Status: ✅ Completed)_
 
 Goal: Introduce a Vite SPA entrypoint without breaking the existing Astro build yet.
 
@@ -29,15 +29,15 @@ Goal: Introduce a Vite SPA entrypoint without breaking the existing Astro build 
 - [x] Add `vite.config.ts` with Preact plugin, WebSpatial plugin, env defines, and alias config.
 - [ ] Verify `pnpm run dev` shows the home screen in web mode.
 
-### Milestone 2 – Route & Base Path Alignment _(Status: Pending)_
+### Milestone 2 – Route & Base Path Alignment _(Status: ✅ Completed)_
 
 Goal: Ensure SPA routing works in both web and AVP modes.
 
-- [ ] Confirm React Router uses the shared `BASE_PATH` helper for `basename`.
-- [ ] Read `XR_ENV` from Vite defines to decide base path at runtime.
-- [ ] Validate primary routes (`/`, `/auth`, `/createAsset`, etc.) locally.
-- [ ] Validate AVP base path (`/webspatial/avp/**`) via `pnpm run dev:avp` and `webspatial-builder`.
-- [ ] Note any regressions or open issues.
+- [x] Confirm React Router uses the shared `BASE_PATH` helper for `basename`.
+- [x] Read `XR_ENV` from Vite defines to decide base path at runtime.
+- [x] Validate primary routes (`/`, `/auth`, `/createAsset`, etc.) locally.
+- [x] Validate AVP base path (`/webspatial/avp/**`) via `pnpm run dev:avp` and `webspatial-builder`.
+- [x] Note any regressions or open issues.
 
 ### Milestone 3 – Port Astro Layouts/Pages _(Status: Pending)_
 

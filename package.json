@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
+    "dev": "XR_ENV=web vite",
     "dev:avp": "XR_ENV=avp vite",
     "build": "tsc && vite build",
     "build:avp": "XR_ENV=avp NODE_ENV=production vite build",

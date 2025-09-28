@@ -1,0 +1,61 @@
+.create-asset {
+  min-height: calc(100vh - var(--header-height, 80px));
+  color: white;
+}
+
+.create-asset .content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.create-asset .step-counter {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.create-asset .selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.create-asset .option-card {
+  background: #d9d9d9;
+  border: 2px solid #000;
+  padding: 2rem;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.create-asset .option-card:hover {
+  transform: translateY(-5px);
+}
+
+.create-asset .option-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.create-asset .option-card h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.create-asset .option-card p {
+  margin: 0;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .create-asset .selection-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,129 @@
+.profile-page {
+  min-height: 100vh;
+  background: #000;
+  color: #d9d9d9;
+  font-family: 'Space Mono', monospace;
+}
+
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.profile-header {
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid #333;
+  padding: 1.5rem;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #d9d9d9;
+}
+
+.username {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.edit-profile {
+  color: #666;
+  cursor: pointer;
+}
+
+.logout {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #666;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.nav-button.active,
+.nav-button:hover {
+  color: #d9d9d9;
+}
+
+.content-section {
+  padding: 2rem 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.create-card-container {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  background: #d9d9d9;
+  border: 2px solid #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  height: 200px;
+  width: 150px;
+  text-decoration: none;
+}
+
+.card-header {
+  background: #d9d9d9;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.card-content {
+  background-image: url('/assets/images/card_back.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.plus-icon {
+  color: white;
+  font-size: 48px;
+  font-weight: lighter;
+}
+
+.card:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+

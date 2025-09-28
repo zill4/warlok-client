@@ -22,9 +22,7 @@
   },
   "include": [
     "src",
-    "vite.config.ts",
-    "index.html",
-    "RefactorPlan.md"
+    "vite.config.ts"
   ],
   "exclude": ["dist", "node_modules"]
 }

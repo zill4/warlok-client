@@ -7,11 +7,10 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const xrEnv = env.XR_ENV || "web";
   const basePath = xrEnv === "avp" ? "/webspatial/avp" : "";
-  const normalizedBase = basePath ? `${basePath}/` : "/";
 
   return {
     plugins: [preact(), webSpatial()],
-    base: normalizedBase,
+    base: basePath || "/",
     define: {
       "process.env.XR_ENV": JSON.stringify(xrEnv),
       __BASE_PATH__: JSON.stringify(basePath),
@@ -26,6 +25,14 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: 4321,
+      open: true,
+    },
+    preview: {
+      port: 4321,
+      open: true,
+    },
+    build: {
+      outDir: "dist",
     },
   };
 });

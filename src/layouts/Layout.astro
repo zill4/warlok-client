@@ -1,17 +1,13 @@
 ---
 import "../styles/fonts.css";
 import { userSignal } from "../components/AuthForm";
-import { BASE_PATH, withBasePath } from "../utils/basePath";
+import { withBasePath } from "../utils/basePath";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-
-// Determine the base path based on XR_ENV and environment
-const basePath = BASE_PATH;
-const faviconHref = withBasePath("assets/images/W.png");
 ---
 
 <html lang="en">
@@ -25,15 +21,17 @@ const faviconHref = withBasePath("assets/images/W.png");
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href={faviconHref} />
+    <link
+      rel="icon"
+      type="image/png"
+      href={withBasePath("assets/images/W.png")}
+    />
   </head>
   <body>
     <header class="header">
       <a href={withBasePath("")} class="logo">山 W̵a̵r̵l̵o̵k̵</a>
       <div class="auth-buttons" id="authButtons">
-        <a href={withBasePath("auth?signup=true")} class="auth-button"
-          >Sign_Up</a
-        >
+        <a href={withBasePath("auth?signup=true")} class="auth-button">Sign_Up</a>
         <span class="divider">/</span>
         <a href={withBasePath("auth?login=true")} class="auth-button">Login</a>
       </div>
@@ -42,10 +40,9 @@ const faviconHref = withBasePath("assets/images/W.png");
       <slot />
     </main>
 
-    <script define:vars={{ basePath }}>
+    <script define:vars={{ basePath: withBasePath("") }}>
       // Client-side auth check
       import { checkAuth } from "../utils/auth";
-      import { withBasePath } from "../utils/basePath";
 
       const updateAuthButtons = async () => {
         const isAuthed = await checkAuth();
