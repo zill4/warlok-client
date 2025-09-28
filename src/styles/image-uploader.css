@@ -1,0 +1,113 @@
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-uploader label {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.image-uploader .upload-box {
+  width: 100%;
+  min-height: 120px;
+  border: 2px dashed #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.image-uploader .upload-box.dragover {
+  border-color: #fff;
+  background: rgba(217, 217, 217, 0.1);
+}
+
+.image-uploader .upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.image-uploader .plus {
+  font-size: 2rem;
+  color: #d9d9d9;
+  margin-bottom: 0.5rem;
+}
+
+.image-uploader .upload-text {
+  font-size: 0.8rem;
+  color: #d9d9d9;
+  margin: 0;
+}
+
+.image-uploader .file-input {
+  display: none;
+}
+
+.image-uploader .file-preview {
+  width: 100%;
+  padding: 0.5rem;
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.image-uploader .small-preview-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.image-uploader .file-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-uploader .file-name {
+  font-size: 0.85rem;
+  color: #d9d9d9;
+  word-break: break-word;
+  max-width: calc(100% - 30px);
+}
+
+.image-uploader .delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.image-uploader .delete-btn:hover {
+  color: #ff0000;
+}
+
+.image-uploader .error-message {
+  color: #ff4d4d;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  min-height: 1rem;
+}
+
+.image-uploader .required {
+  color: #ff4444;
+}
+

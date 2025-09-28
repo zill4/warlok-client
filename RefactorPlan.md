@@ -44,8 +44,8 @@ Goal: Replace Astro-rendered pages with TSX components while reusing styles.
 
 - [x] Create TSX versions of `Layout`, `index`, `auth`, `createAsset`, `create-card`, `profile`.
 - [x] Add CSS counterparts for ported pages (`layout.css`, `auth-page.css`, `create-asset.css`, `create-card.css`, `profile-page.css`).
-- [ ] Port create asset upload/generate flows (`CreateAssetUploadPage`, `CreateAssetGeneratePage`) with functional components.
-- [ ] Convert Astro-specific components (`CreatorSearch.astro`, `ImageUploader.astro`, `StatusModal.astro`, etc.) to TSX.
+- [x] Port create asset placeholders (`CreateAssetUploadPage`, `CreateAssetGeneratePage`), `FormField`, `ImageUploader`, `CreatorSearch`, `CardPreview`.
+- [ ] Convert remaining Astro-specific components (`StatusModal.astro`, etc.) to TSX.
 - [ ] Smoke-test converted pages for visual and functional parity.
 
 ### Milestone 4 – Cleanup & Dependency Removal _(Status: Pending)_

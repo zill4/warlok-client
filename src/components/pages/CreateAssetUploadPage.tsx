@@ -1,5 +1,8 @@
 import FormField from '../FormField';
+import ImageUploader from '../ImageUploader';
+import CreatorSearch from '../CreatorSearch';
 import CardPreview from '../CardPreview';
+import CardComponent from '../CardComponent';
 import '../../styles/fonts.css';
 import '../../styles/create-asset-upload.css';
 
@@ -15,7 +18,7 @@ export default function CreateAssetUploadPage() {
               <FormField id="assetName" label="ASSET NAME" required />
               <FormField id="assetDescription" label="DESCRIPTION" type="textarea" optional />
               <FormField id="assetTags" label="TAGS" placeholder="Enter asset tags (comma separated)" optional />
-              <div className="creator-placeholder">Creator search coming soon...</div>
+              <CreatorSearch />
 
               <div className="form-row">
                 <div className="form-col">
@@ -42,8 +45,7 @@ export default function CreateAssetUploadPage() {
 
           <div className="upload-section">
             <div className="small-upload">
-              {/* ImageUploader component to be ported */}
-              <div className="uploader-placeholder">Image uploader coming soon...</div>
+              <ImageUploader />
             </div>
             <div className="preview-area">
               <CardPreview />

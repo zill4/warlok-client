@@ -1,0 +1,86 @@
+.card-component {
+  background: #d9d9d9;
+  outline: 2px solid #d9d9d9;
+  outline-offset: -1px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+.card-component .card-header {
+  background: #d9d9d9;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.card-component .card-image-container {
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.card-component .image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.card-component .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.card-component .card-footer {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #000;
+  font-size: 0.8rem;
+  background: #d9d9d9;
+}
+
+.card-component .card-footer.center {
+  justify-content: center;
+}
+
+.card-component .creator-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-component .creator-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.card-component .view-options {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.card-component .view-button {
+  background: none;
+  border: 1px solid #333;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.card-component .view-button.active {
+  background: #000;
+  color: #fff;
+}
