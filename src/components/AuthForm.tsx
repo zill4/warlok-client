@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 import { signal } from '@preact/signals';
 import type { AuthFormData, UserData, AuthResponse } from '../types/shared';
+import { withBasePath } from '../utils/basePath';
 
 const userSignal = signal<UserData | null>(null);
 
@@ -85,7 +86,7 @@ export default function AuthForm() {
                 },
                 authTimestamp: Date.now()
             };
-            window.location.href = '/profile';
+            window.location.href = withBasePath('profile');
         } catch (err: unknown) {
             setError((err as Error).message || 'An error occurred');
         } finally {

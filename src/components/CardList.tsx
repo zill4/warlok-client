@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { Card } from '../types/card';
+import { withBasePath } from '../utils/basePath';
 
 interface CardListProps {
   cards: Card[];
@@ -9,8 +10,8 @@ export default function CardList({ cards }: CardListProps) {
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
     const handleNewCardClick = () => {
-        window.location.href = '/create-card';
-    }
+        window.location.href = withBasePath('create-card');
+    };
 
   return (
     <div class="card-list-container">

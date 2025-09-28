@@ -1,48 +1,55 @@
 ---
 // Component Imports
-import '../styles/fonts.css';
-import Layout from '../layouts/Layout.astro';
-import '../styles/card-list.css';
-import CardComponent from '../components/CardComponent.astro';
-import CreateModelCard from '../components/CreateModelCard.astro';
+import "../styles/fonts.css";
+import Layout from "../layouts/Layout.astro";
+import "../styles/card-list.css";
+import CardComponent from "../components/CardComponent.astro";
+import CreateModelCard from "../components/CreateModelCard.astro";
+import { withBasePath } from "../utils/basePath";
 
 // Sample model data to match the screenshot
 const models = [
   {
-    id: '1',
-    name: 'METALGREYMON',
-    creator: 'Zi114',
-    image: '/assets/images/card_back.jpg'
+    id: "1",
+    name: "METALGREYMON",
+    creator: "Zi114",
+    image: withBasePath("assets/images/card_back.jpg"),
   },
   {
-    id: '2',
-    name: 'METALGREYMON',
-    creator: 'Zi114',
-    image: '/assets/images/card_back.jpg'
+    id: "2",
+    name: "METALGREYMON",
+    creator: "Zi114",
+    image: withBasePath("assets/images/card_back.jpg"),
   },
   {
-    id: '3',
-    name: 'METALGREYMON',
-    creator: 'Zi114',
-    image: '/assets/images/card_back.jpg'
+    id: "3",
+    name: "METALGREYMON",
+    creator: "Zi114",
+    image: withBasePath("assets/images/card_back.jpg"),
   },
   {
-    id: '4',
-    name: 'METALGREYMON',
-    creator: 'Zi114',
-    image: '/assets/images/card_back.jpg'
-  }
+    id: "4",
+    name: "METALGREYMON",
+    creator: "Zi114",
+    image: withBasePath("assets/images/card_back.jpg"),
+  },
 ];
-  
 ---
+
 <Layout title="Profile">
   <div class="profile-container">
     <div class="profile-header">
       <div class="profile-info">
-        <img src="https://pbs.twimg.com/profile_images/1882571472712974336/LBgD5N5R_400x400.jpg" alt="Profile" class="avatar" />
+        <img
+          src="https://pbs.twimg.com/profile_images/1882571472712974336/LBgD5N5R_400x400.jpg"
+          alt="Profile"
+          class="avatar"
+        />
         <div class="username">Zi114</div>
         <div class="edit-profile">✎</div>
-        <div class="logout" onclick="handleLogout()" style="cursor: pointer;">Logout</div>  
+        <div class="logout" onclick="handleLogout()" style="cursor: pointer;">
+          Logout
+        </div>
       </div>
     </div>
 
@@ -52,21 +59,23 @@ const models = [
 
     <div class="content">
       <div class="models-grid">
-        {models.map(model => (
-          <CardComponent 
-            title={model.name}
-            image={model.image}
-            creator={model.creator}
-            showViewOptions={true}
-          />
-        ))}
-        
+        {
+          models.map((model) => (
+            <CardComponent
+              title={model.name}
+              image={model.image}
+              creator={model.creator}
+              showViewOptions={true}
+            />
+          ))
+        }
+
         <CreateModelCard />
-        
+
         <!-- In Progress Card -->
-        <CardComponent 
+        <CardComponent
           title="Greymon 2/3"
-          image="/assets/images/Ace_Kunoichi.png"
+          image={withBasePath("assets/images/Ace_Kunoichi.png")}
           footerText="In progress..."
           centerFooter={true}
         />
@@ -81,7 +90,7 @@ const models = [
     margin: 0 auto;
     padding: 2rem;
     color: #000;
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     background-color: #000;
   }
 
@@ -131,9 +140,9 @@ const models = [
     background: #0a0a0a;
     border: 1px solid #333;
     padding: 0.75rem 1.5rem;
-    color: #D9D9D9;
+    color: #d9d9d9;
     cursor: pointer;
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     transition: all 0.2s ease;
   }
 
@@ -157,32 +166,32 @@ const models = [
   .logout:hover {
     color: #ff4444;
   }
-  
+
   .models-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
   }
-  
+
   /* Card styles for the create model card */
   .card {
-    background: #D9D9D9;
+    background: #d9d9d9;
     border: 2px solid #000;
-    outline: 2px solid #D9D9D9;
+    outline: 2px solid #d9d9d9;
     outline-offset: -1px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     color: #000;
   }
-  
+
   .card-header {
-    background: #D9D9D9;
+    background: #d9d9d9;
     padding: 0.5rem;
     font-weight: bold;
     border-bottom: 2px solid #000;
   }
-  
+
   .card-image-container {
     aspect-ratio: 4/5;
     display: flex;
@@ -191,7 +200,7 @@ const models = [
     padding: 0;
     margin: 0;
   }
-  
+
   .image-wrapper {
     width: 100%;
     height: 100%;
@@ -201,7 +210,7 @@ const models = [
     margin: 0;
     padding: 0;
   }
-  
+
   .card-image {
     width: 100%;
     height: 100%;
@@ -209,7 +218,7 @@ const models = [
     display: block;
     border-radius: 0;
   }
-  
+
   .card-footer {
     padding: 0.5rem;
     display: flex;
@@ -217,9 +226,9 @@ const models = [
     align-items: center;
     border-top: 2px solid #000;
     font-size: 0.8rem;
-    background: #D9D9D9;
+    background: #d9d9d9;
   }
-  
+
   /* Updated CREATE 3D MODEL card styles */
   .create-model-content {
     aspect-ratio: 4/5;
@@ -237,7 +246,7 @@ const models = [
 
   .swirl-footer {
     height: 40px;
-    background-image: url('/assets/images/card_back.jpg');
+    background-image: url("${withBasePath("assets/images/card_back.jpg")}");
     background-size: cover;
     background-position: center;
   }
@@ -258,7 +267,7 @@ const models = [
 
 <script is:inline>
   function handleLogout() {
-    localStorage.removeItem('token');
-    window.location.href = '/';
+    localStorage.removeItem("token");
+    window.location.href = withBasePath("");
   }
 </script>

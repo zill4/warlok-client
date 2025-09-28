@@ -4,15 +4,25 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:avp": "XR_ENV=avp astro dev",
     "build": "astro build",
+    "build:avp": "XR_ENV=avp NODE_ENV=production astro build",
+    "lint": "eslint .",
     "preview": "astro preview",
-    "astro": "astro"
+    "preview:avp": "XR_ENV=avp astro preview",
+    "run:avp": "dotenv -e .env.local -- sh -c 'webspatial-builder run --base=$XR_DEV_SERVER'",
+    "build:avp:webspatial": "dotenv -e .env.local -- sh -c 'webspatial-builder build --base=$XR_PRE_SERVER --bundle-id=$XR_BUNDLE_ID --teamId=$XR_TEAM_ID'",
+    "publish:avp": "dotenv -e .env.local -- sh -c 'webspatial-builder publish --base=$XR_PROD_SERVER --bundle-id=$XR_BUNDLE_ID --teamId=$XR_TEAM_ID --version=$XR_VERSION --u=$XR_DEV_NAME --p=$XR_DEV_PASSWORD'",
+    "gen:icons": "node scripts/generate-icons.js"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.4",
     "@google/model-viewer": "^4.1.0",
     "@preact/signals": "^2.0.1",
     "@types/gsap": "^1.20.2",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/react-router-dom": "^5.3.3",
     "@webgpu/types": "^0.1.54",
     "@webspatial/core-sdk": "^1.0.0",
     "@webspatial/react-sdk": "^1.0.0",
@@ -20,15 +30,23 @@
     "gsap": "^3.12.7",
     "html2canvas": "^1.4.1",
     "preact": "^10.25.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.9.3",
     "three": "^0.172.0"
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.7.4",
     "@types/three": "^0.172.0",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
     "@vitejs/plugin-react": "^4.6.0",
     "@webspatial/builder": "^1.0.0",
     "@webspatial/platform-visionos": "^1.0.0",
     "@webspatial/vite-plugin": "^0.1.8",
+    "astro-eslint-parser": "^1.0.0",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "^9.17.0",
     "typescript": "^5.7.3",
     "vite-plugin-html": "^3.2.2"
   }
