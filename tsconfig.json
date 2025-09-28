@@ -1,23 +1,30 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "baseUrl": ".",
-    // Preact specific settings
     "jsx": "react-jsx",
     "jsxImportSource": "@webspatial/react-sdk",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
     "types": [
       "three",
       "@webgpu/types"
     ],
     "paths": {
-      "react": [
-        "preact/compat"
-      ],
-      "react-dom": [
-        "preact/compat"
-      ]
+      "react": ["preact/compat"],
+      "react-dom": ["preact/compat"]
     }
-  }
+  },
+  "include": [
+    "src",
+    "vite.config.ts",
+    "index.html",
+    "RefactorPlan.md"
+  ],
+  "exclude": ["dist", "node_modules"]
 }

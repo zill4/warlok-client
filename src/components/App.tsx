@@ -9,7 +9,7 @@ import { BASE_PATH } from '../utils/basePath';
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter basename={BASE_PATH || undefined}>
+      <BrowserRouter basename={BASE_PATH || '/'}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="auth" element={<AuthPage />} />

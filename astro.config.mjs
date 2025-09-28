@@ -5,7 +5,7 @@ import webSpatial from "@webspatial/vite-plugin";
 
 const xrEnv = process.env.XR_ENV || 'web';
 const isAvp = xrEnv === 'avp';
-const astroBase = isAvp ? '/webspatial/avp/' : '/';
+const astroBase = '/';
 const basePath = isAvp ? '/webspatial/avp' : '';
 
 // https://astro.build/config
@@ -13,7 +13,7 @@ export default defineConfig({
 	// Enable Preact to support Preact JSX components.
 	integrations: [preact()],
 	base: astroBase,
-	output: 'static',
+	output: isAvp ? 'server' : 'static',
 	vite: {
 		plugins: [
 			webSpatial(),
