@@ -1,0 +1,35 @@
+.create-asset-generate {
+  min-height: calc(100vh - var(--header-height, 80px));
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.create-asset-generate .content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.create-asset-generate .step-counter {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.create-asset-generate .coming-soon {
+  background: rgba(26, 26, 26, 0.9);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+}
+
+.create-asset-generate .coming-soon h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.create-asset-generate .coming-soon p {
+  color: #999;
+  font-size: 1.1rem;
+}

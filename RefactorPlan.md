@@ -39,14 +39,13 @@ Goal: Ensure SPA routing works in both web and AVP modes.
 - [x] Validate AVP base path (`/webspatial/avp/**`) via `pnpm run dev:avp` and `webspatial-builder`.
 - [x] Note any regressions or open issues.
 
-### Milestone 3 – Port Astro Layouts/Pages _(Status: Pending)_
-
+### Milestone 3 – Port Astro Layouts/Pages _(Status: In Progress)_
 Goal: Replace Astro-rendered pages with TSX components while reusing styles.
 
-- [ ] Create TSX versions of `Layout`, `index`, `auth`, `createAsset`, `profile`, etc.
-- [ ] Migrate shared UI logic (headers, auth buttons) into reusable components.
-- [ ] Update React Router routes to use the new components.
-- [ ] Remove Astro hydration directives (`client:only`, `client:load`) in favor of standard Preact usage.
+- [x] Create TSX versions of `Layout`, `index`, `auth`, `createAsset`, `create-card`, `profile`.
+- [x] Add CSS counterparts for ported pages (`layout.css`, `auth-page.css`, `create-asset.css`, `create-card.css`, `profile-page.css`).
+- [ ] Port create asset upload/generate flows (`CreateAssetUploadPage`, `CreateAssetGeneratePage`) with functional components.
+- [ ] Convert Astro-specific components (`CreatorSearch.astro`, `ImageUploader.astro`, `StatusModal.astro`, etc.) to TSX.
 - [ ] Smoke-test converted pages for visual and functional parity.
 
 ### Milestone 4 – Cleanup & Dependency Removal _(Status: Pending)_

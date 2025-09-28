@@ -1,0 +1,9 @@
+.home-page {
+  min-height: 100vh;
+  background: #000;
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

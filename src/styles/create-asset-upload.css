@@ -1,0 +1,92 @@
+.create-asset {
+  min-height: calc(100vh - var(--header-height, 80px));
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.create-asset .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.create-asset .step-counter {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.create-asset .form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.create-asset .form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-asset .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-asset .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.create-asset .form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-asset .upload-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.create-asset .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.create-asset .cancel-btn,
+.create-asset .submit-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.create-asset .cancel-btn {
+  background: none;
+  color: white;
+  border: 1px solid white;
+}
+
+.create-asset .submit-btn {
+  background: white;
+  color: black;
+}
+
+@media (max-width: 992px) {
+  .create-asset .form-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-asset .upload-section,
+  .create-asset .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+

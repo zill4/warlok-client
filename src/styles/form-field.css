@@ -1,0 +1,57 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.form-field .input-field,
+.form-field .input-field.textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  border-bottom: 1px solid #333;
+  font-family: inherit;
+}
+
+.form-field .textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-field .input-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-field .required {
+  color: #ff4444;
+  margin-left: 0.25rem;
+}
+
+.form-field .optional {
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+.form-field .error-message {
+  color: #ff4444;
+  font-size: 0.8rem;
+  min-height: 1rem;
+  margin-top: 0.25rem;
+}
+
+.form-field .helper-text {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.25rem;
+}

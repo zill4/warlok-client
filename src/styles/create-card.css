@@ -1,0 +1,42 @@
+.create-card-page {
+  background: #000;
+  color: #d9d9d9;
+  min-height: 100vh;
+  font-family: 'Space Mono', monospace;
+}
+
+.create-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.form-section,
+.preview-section {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 2rem;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section {
+  min-height: 1000px;
+}
+
+.preview-section {
+  align-items: center;
+  justify-content: center;
+  max-height: 1000px;
+}
+
+@media (max-width: 1024px) {
+  .create-card-container {
+    grid-template-columns: 1fr;
+  }
+}
+

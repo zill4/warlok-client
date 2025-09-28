@@ -3,7 +3,7 @@ import '../../styles/fonts.css';
 
 export default function HomePage() {
 	return (
-		<div className="game-container">
+		<div className="home-page">
 			<ChessGame />
 		</div>
 	);
