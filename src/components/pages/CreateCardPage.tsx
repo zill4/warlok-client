@@ -3,6 +3,17 @@ import CardPreview from '../CardPreview';
 import '../../styles/fonts.css';
 import '../../styles/create-card.css';
 
+const defaultCardData = {
+  name: '',
+  chessPieceType: '',
+  pokerCardSymbol: 'Clubs' as const,
+  pokerCardType: 'Ace' as const,
+  cardType: 'Dragon' as const,
+  description: '',
+  effect: '',
+  image: '',
+};
+
 export default function CreateCardPage() {
   return (
     <div className="create-card-page">
@@ -11,16 +22,7 @@ export default function CreateCardPage() {
           <CardForm cardPreviewId="cardPreview" />
         </div>
         <div className="preview-section" id="cardPreviewContainer">
-          <CardPreview cardData={{
-            name: '',
-            chessPieceType: '',
-            pokerCardSymbol: 'Clubs',
-            pokerCardType: 'Ace',
-            cardType: 'Dragon',
-            description: '',
-            effect: '',
-            image: ''
-          }} />
+          <CardPreview cardData={defaultCardData} />
         </div>
       </div>
     </div>

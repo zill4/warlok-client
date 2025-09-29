@@ -5,12 +5,6 @@ import '../../styles/auth-page.css';
 export default function AuthPage() {
   return (
     <div className="auth-page">
-      <header className="auth-header">
-        <a href="/" className="auth-logo">
-          <img src="/assets/images/W.png" alt="Logo" className="auth-logo-icon" />
-          山 W̵a̵r̵l̵o̵k̵
-        </a>
-      </header>
 
       <main className="auth-container">
         <div className="welcome-box">

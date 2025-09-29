@@ -17,8 +17,6 @@ const StatusModal = forwardRef<StatusModalHandle>((_, ref) => {
   const [progress, setProgress] = useState(0);
   const [closeEnabled, setCloseEnabled] = useState(false);
 
-  const modalRef = useRef<HTMLDivElement | null>(null);
-
   const hide = () => {
     setVisible(false);
     document.dispatchEvent(new CustomEvent('status-modal-closed', { detail: { status: title } }));
@@ -44,18 +42,14 @@ const StatusModal = forwardRef<StatusModalHandle>((_, ref) => {
   if (!visible) return null;
 
   return (
-    <div className="status-modal" ref={modalRef}>
+    <div className="status-modal">
       <div className="status-content">
         <h3>{title}</h3>
         <div className="status-message">{message}</div>
         <div className="progress-bar">
           <div className="progress" style={{ width: `${progress}%` }} />
         </div>
-        <button
-          className="close-btn"
-          onClick={hide}
-          disabled={!closeEnabled}
-        >
+        <button className="close-btn" onClick={hide} disabled={!closeEnabled}>
           Close
         </button>
       </div>
