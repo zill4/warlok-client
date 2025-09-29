@@ -2,7 +2,7 @@ import FormField from '../FormField';
 import ImageUploader from '../ImageUploader';
 import CreatorSearch from '../CreatorSearch';
 import CardPreview from '../CardPreview';
-import CardComponent from '../CardComponent';
+import StatusModal from '../StatusModal';
 import '../../styles/fonts.css';
 import '../../styles/create-asset-upload.css';
 
@@ -60,6 +60,7 @@ export default function CreateAssetUploadPage() {
           </div>
 
           {/* StatusModal port pending */}
+          <StatusModal />
         </div>
       </div>
     </div>

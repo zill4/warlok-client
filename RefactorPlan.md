@@ -40,13 +40,13 @@ Goal: Ensure SPA routing works in both web and AVP modes.
 - [x] Note any regressions or open issues.
 
 ### Milestone 3 – Port Astro Layouts/Pages _(Status: In Progress)_
+
 Goal: Replace Astro-rendered pages with TSX components while reusing styles.
 
 - [x] Create TSX versions of `Layout`, `index`, `auth`, `createAsset`, `create-card`, `profile`.
 - [x] Add CSS counterparts for ported pages (`layout.css`, `auth-page.css`, `create-asset.css`, `create-card.css`, `profile-page.css`).
-- [x] Port create asset placeholders (`CreateAssetUploadPage`, `CreateAssetGeneratePage`), `FormField`, `ImageUploader`, `CreatorSearch`, `CardPreview`.
-- [ ] Convert remaining Astro-specific components (`StatusModal.astro`, etc.) to TSX.
-- [ ] Smoke-test converted pages for visual and functional parity.
+- [x] Port create asset placeholders (`CreateAssetUploadPage`, `CreateAssetGeneratePage`), `FormField`, `ImageUploader`, `CreatorSearch`, `CardPreview`, `CardComponent`, `StatusModal`.
+- [ ] Integrate remaining Astro-only logic (StatusModal wiring, image upload service) and smoke-test pages.
 
 ### Milestone 4 – Cleanup & Dependency Removal _(Status: Pending)_
 
