@@ -107,7 +107,6 @@
 }
 
 .card-content {
-  background-image: url('/assets/images/card_back.jpg');
   background-size: cover;
   background-position: center;
   display: flex;

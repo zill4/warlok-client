@@ -70,7 +70,10 @@ export default function ProfilePage() {
             <div className="create-card-container">
               <Link to={withBasePath('createAsset')} className="card">
                 <div className="card-header">CREATE ASSET</div>
-                <div className="card-content">
+                <div 
+                  className="card-content"
+                  style={{ backgroundImage: `url(${withBasePath('/assets/images/card_back.jpg')})` }}
+                >
                   <div className="plus-icon">+</div>
                 </div>
               </Link>

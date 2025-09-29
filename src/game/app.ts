@@ -10,6 +10,7 @@ import { CardSystem } from "./card.js";
 import { InputManager } from "./input.js";
 import { Bot } from "./bot.js";
 import { LightManager } from "./light-manager";
+import { withBasePath } from "../utils/basePath";
 
 // Configuration (from constants.py)
 export const BOARD_CONFIG = {
@@ -336,9 +337,8 @@ export class ChessGame {
 
     const loadPromises = types.flatMap((type) => {
       const scale = 0.005;
-
       return ["white", "black"].map(async (color) => {
-        const path = `/assets/models/${color}_${type}.fbx`;
+        const path = withBasePath(`/assets/models/${color}_${type}.fbx`);
         try {
           const model = await loader.loadAsync(path);
           model.scale.setScalar(scale);

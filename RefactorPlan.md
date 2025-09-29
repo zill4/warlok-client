@@ -77,3 +77,4 @@ Goal: Validate the entire app before considering the refactor complete.
 
 - **2025-09-28:** Initial refactor plan documented (Milestone 0 complete).
 - **2025-09-28:** Milestone 1 kicked off (Vite shell scaffolded and scripts updated).
+- **2025-09-29:** Fixed AVP asset loading by implementing `withBasePath()` for all hardcoded `/assets/` paths in game code (app.ts, card.ts, board.ts) and UI components (CardPreview, AuthForm, ProfilePage).

@@ -1,6 +1,7 @@
 // src/components/CardPreview.tsx
 import { useEffect, useRef } from 'preact/hooks';
 import type { CardData } from '../types/shared';
+import { withBasePath } from '../utils/basePath';
 import '../styles/card-preview.css';
 
 type CardPreviewProps = {
@@ -52,7 +53,7 @@ export default function CardPreview({ cardData = defaultCardData, showFooter = t
           <div className="image-wrapper">
             <img
               data-card="image"
-              src={cardData.image || '/assets/images/card_back.jpg'}
+              src={cardData.image || withBasePath('/assets/images/card_back.jpg')}
               alt={cardData.name || 'Card Preview'}
               className="card-image"
             />

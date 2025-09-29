@@ -251,7 +251,7 @@ export default function AuthForm() {
                         transition: 'background-color 0.2s'
                     }}
                 >
-                    <img src="/assets/images/branding/x/logo-black.png" alt="X" width="20" height="20" />
+                    <img src={withBasePath("/assets/images/branding/x/logo-black.png")} alt="X" width="20" height="20" />
                     Continue with X
                 </button>
             </form>
