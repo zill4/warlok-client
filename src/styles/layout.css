@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: transparent;
 }
 
 .header {
@@ -92,3 +93,34 @@ body {
   flex-direction: column;
 }
 
+/* Spatial/AVP mode styles */
+html.is-spatial {
+  background-color: transparent !important;
+  --xr-background-material: transparent;
+}
+
+html.is-spatial body {
+  background: none !important;
+  --xr-background-material: transparent;
+}
+
+html.is-spatial .header {
+  background: none !important;
+  --xr-background-material: translucent;
+  border-radius: 20px;
+  position: fixed;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(100px);
+  z-index: 10;
+}
+
+html.is-spatial .layout-root {
+  background: none !important;
+  --xr-background-material: transparent;
+}
+
+html.is-spatial .layout-main {
+  background: none !important;
+  --xr-background-material: transparent;
+}

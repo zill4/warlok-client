@@ -39,8 +39,8 @@ export default function Layout({ title, children }: PropsWithChildren<LayoutProp
   };
 
   return (
-    <div className="layout-root">
-      <header className="header">
+    <div className="layout-root" enable-xr>
+      <header className="header" enable-xr>
         <Link to={withBasePath('')} className="logo">
           山 W̵a̵r̵l̵o̵k̵
         </Link>
@@ -77,7 +77,7 @@ export default function Layout({ title, children }: PropsWithChildren<LayoutProp
         </div>
       </header>
 
-      <main className="layout-main">{children}</main>
+      <main className="layout-main" enable-xr>{children}</main>
     </div>
   );
 }

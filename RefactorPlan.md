@@ -27,7 +27,7 @@ Goal: Introduce a Vite SPA entrypoint without breaking the existing Astro build 
 - [x] Create `src/main.tsx` to render `<App />` and import global styles.
 - [x] Update `package.json` scripts (`dev`, `build`, `preview`, AVP variants) to use Vite.
 - [x] Add `vite.config.ts` with Preact plugin, WebSpatial plugin, env defines, and alias config.
-- [ ] Verify `pnpm run dev` shows the home screen in web mode.
+- [x] Verify `pnpm run dev` shows the home screen in web mode.
 
 ### Milestone 2 – Route & Base Path Alignment _(Status: ✅ Completed)_
 

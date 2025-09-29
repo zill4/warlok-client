@@ -7,3 +7,14 @@
   align-items: center;
 }
 
+/* Spatial/AVP mode styles */
+html.is-spatial .home-page {
+  background: none !important;
+  --xr-background-material: transparent;
+  /* Remove normal layout constraints in spatial mode */
+  min-height: 0;
+  display: block;
+  justify-content: unset;
+  align-items: unset;
+  padding: 0;
+}

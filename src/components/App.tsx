@@ -1,5 +1,5 @@
-import { Suspense } from 'preact/compat';
-import type { ComponentChildren } from 'preact';
+import { Suspense } from 'react';
+import type { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './AuthProvider';
 import HomePage from './pages/HomePage';
@@ -14,7 +14,7 @@ import CreateAssetGeneratePage from './pages/CreateAssetGeneratePage';
 
 type LayoutRouteProps = {
   title: string;
-  element: ComponentChildren;
+  element: ReactNode;
 };
 
 function LayoutRoute({ title, element }: LayoutRouteProps) {
@@ -22,6 +22,17 @@ function LayoutRoute({ title, element }: LayoutRouteProps) {
 }
 
 export default function App() {
+  // Simple test for WebSpatial in AVP mode
+  if ((process.env.XR_ENV as any) === 'avp') {
+    return (
+      <div enable-xr style={{ padding: '20px', color: 'white', fontSize: '24px' }}>
+        <h1 enable-xr>🎯 WebSpatial Test</h1>
+        <p enable-xr>If you can see this, WebSpatial rendering is working!</p>
+        <p enable-xr>Environment: {process.env.XR_ENV}</p>
+      </div>
+    );
+  }
+
   return (
     <AuthProvider>
       <BrowserRouter basename={BASE_PATH || '/'}>
@@ -45,3 +56,15 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+
+// export default function App() {
+//   return (
+//       <BrowserRouter basename={BASE_PATH || '/'}>
+//         <Routes>
+
+//           <Route path="/" element={<LayoutRoute title="Home" element={<HomePage />} />} />
+//         </Routes>
+//       </BrowserRouter>
+//   );
+// }

@@ -3,7 +3,7 @@ import '../../styles/fonts.css';
 
 export default function HomePage() {
 	return (
-		<div className="home-page">
+		<div enable-xr className="home-page">
 			<ChessGame />
 		</div>
 	);

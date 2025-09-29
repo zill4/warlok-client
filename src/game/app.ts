@@ -144,7 +144,17 @@ export class ChessGame {
 
   private async setupScene(): Promise<void> {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x000000);
+
+    // // Check if we're in spatial mode
+    // const isSpatial = document.documentElement.classList.contains("is-spatial");
+
+    // if (isSpatial) {
+    //   // Transparent background for spatial mode
+    //   this.scene.background = null;
+    // } else {
+    //   // Black background for normal mode
+    //   this.scene.background = new THREE.Color(0x000000);
+    // }
 
     // Log all lights in scene for debugging
     this.scene.traverse((object) => {

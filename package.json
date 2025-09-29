@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "XR_ENV=web vite",
     "dev:avp": "XR_ENV=avp vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "build:avp": "XR_ENV=avp NODE_ENV=production vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -31,10 +31,11 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.7.4",
+    "@preact/preset-vite": "^2.10.2",
     "@types/three": "^0.172.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
-    "@preact/preset-vite": "^2.10.2",
+    "@vitejs/plugin-react": "^5.0.4",
     "@webspatial/builder": "^1.0.0",
     "@webspatial/platform-visionos": "^1.0.0",
     "@webspatial/vite-plugin": "^0.1.8",

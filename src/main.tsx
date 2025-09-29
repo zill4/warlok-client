@@ -1,12 +1,14 @@
-import { render } from 'preact';
+import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import './styles/fonts.css';
+import './styles/layout.css'; // Import spatial styles globally
 import { BASE_PATH } from './utils/basePath';
 
-const root = document.getElementById('root');
+const rootElement = document.getElementById('root');
 
-if (root) {
-	render(<App />, root);
+if (rootElement) {
+	const root = createRoot(rootElement);
+	root.render(<App />);
 } else {
 	console.error('Root element not found for app mounting');
 }

@@ -116,4 +116,49 @@ canvas {
         width: 90%;
         min-width: 400px;
     }
+}
+
+/* Spatial/AVP mode styles */
+html.is-spatial #game-container {
+  background: none !important;
+  --xr-background-material: translucent;
+  border-radius: 20px;
+  border: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(50px);
+  width: 85%;
+  max-width: 1800px;
+  z-index: 5;
+}
+
+html.is-spatial canvas {
+  background: none !important;
+}
+
+html.is-spatial #turn-indicator {
+  background: none !important;
+  --xr-background-material: translucent;
+  border-radius: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transform: translateZ(10px);
+}
+
+html.is-spatial .move-history {
+  background: none !important;
+  --xr-background-material: translucent;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  transform: translateZ(10px);
+}
+
+html.is-spatial #fps {
+  background: none !important;
+  --xr-background-material: translucent;
+  border-radius: 10px;
 } 

@@ -96,9 +96,9 @@ export default function ChessGame({ containerId = 'game-container', ...props }: 
   const displayedHistory = showFullHistory ? moveHistory : moveHistory.slice(-3);
 
   return (
-    <div id={containerId} ref={containerRef} {...props}>
+    <div id={containerId} ref={containerRef} enable-xr {...props}>
       <div className="game-info">
-        <div id="turn-indicator">
+        <div id="turn-indicator" enable-xr>
           Turn {turnNumber}: {currentTurn}
           {botThinking && thinkingTime > 0 && (
             <span className="thinking-indicator"> (thinking... {thinkingTime}s)</span>
@@ -106,7 +106,7 @@ export default function ChessGame({ containerId = 'game-container', ...props }: 
         </div>
         
         {moveHistory.length > 0 && (
-          <div className="move-history">
+          <div className="move-history" enable-xr>
             <div className="history-entries">
               {displayedHistory.map((move, index) => (
                 <div key={`move-${move.timestamp}-${index}`} className="history-entry">
@@ -116,6 +116,7 @@ export default function ChessGame({ containerId = 'game-container', ...props }: 
             </div>
             {moveHistory.length > 3 && (
               <button 
+                enable-xr
                 className="history-toggle"
                 onClick={() => setShowFullHistory(prev => !prev)}
               >
