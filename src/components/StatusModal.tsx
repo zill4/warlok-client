@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from 'preact/compat';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import '../styles/status-modal.css';
 
 export type StatusModalHandle = {

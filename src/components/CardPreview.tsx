@@ -1,5 +1,5 @@
 // src/components/CardPreview.tsx
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'react';
 import type { CardData } from '../types/shared';
 import { withBasePath } from '../utils/basePath';
 import '../styles/card-preview.css';

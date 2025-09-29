@@ -1,4 +1,4 @@
-import { useRef, useState } from 'preact/hooks';
+import { useRef, useState } from 'react';
 import FormField from '../FormField';
 import ImageUploader, { ImageUploaderHandle } from '../ImageUploader';
 import CreatorSearch from '../CreatorSearch';

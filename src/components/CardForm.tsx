@@ -1,8 +1,8 @@
 // src/components/CardForm.tsx
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from 'react';
 import type { CardData } from '../types/shared';
 import ImageUpload from './ImageUpload';
-import { cardStore } from '../store/cardStore';
+import { useCardStore } from '../store/cardStore';
 
 interface CardFormProps {
   onCardUpdate?: (card: CardData) => void;
@@ -10,7 +10,8 @@ interface CardFormProps {
 }
 
 export default function CardForm({ onCardUpdate, cardPreviewId }: CardFormProps) {
-  const [cardData, setCardData] = useState<CardData>(cardStore.value.cardData);
+  const { store, updateCardData, resetCard } = useCardStore();
+  const [cardData, setCardData] = useState<CardData>(store.cardData);
 
   const handleInputChange = (e: Event) => {
     const target = e.target as HTMLInputElement | HTMLSelectElement;
@@ -18,10 +19,7 @@ export default function CardForm({ onCardUpdate, cardPreviewId }: CardFormProps)
     setCardData(newCardData);
     
     // Update global store
-    cardStore.value = {
-      ...cardStore.value,
-      cardData: newCardData
-    };
+    updateCardData(newCardData);
     
     // Emit custom event
     const event = new CustomEvent('cardupdate', {
@@ -82,7 +80,7 @@ export default function CardForm({ onCardUpdate, cardPreviewId }: CardFormProps)
         throw new Error('User not authenticated');
       }
 
-      if (!cardStore.value.cardImage) {
+      if (!store.cardImage) {
         throw new Error('Card image not ready');
       }
 
@@ -93,7 +91,7 @@ export default function CardForm({ onCardUpdate, cardPreviewId }: CardFormProps)
       }));
 
       // Convert the stored image data to blob
-      const response = await fetch(cardStore.value.cardImage);
+      const response = await fetch(store.cardImage);
       const blob = await response.blob();
       formData.append('image', blob, `${cardData.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`);
 
@@ -126,10 +124,7 @@ export default function CardForm({ onCardUpdate, cardPreviewId }: CardFormProps)
       };
       
       setCardData(emptyCard);
-      cardStore.value = {
-        cardData: emptyCard,
-        cardImage: null
-      };
+      resetCard();
 
     } catch (error) {
       console.error('Error creating card:', error);

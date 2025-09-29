@@ -1,5 +1,4 @@
 import { defineConfig, loadEnv } from "vite";
-import preact from "@preact/preset-vite";
 import react from "@vitejs/plugin-react";
 import webSpatial from "@webspatial/vite-plugin";
 import path from "node:path";
@@ -11,10 +10,10 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      // Use React for AVP mode, Preact for web mode
-      xrEnv === "avp"
-        ? react({ jsxImportSource: "@webspatial/react-sdk" })
-        : preact(),
+      // Always use React now (no more Preact)
+      react({
+        jsxImportSource: xrEnv === "avp" ? "@webspatial/react-sdk" : "react",
+      }),
       webSpatial(),
     ],
     base: basePath || "/",
@@ -25,12 +24,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
-        // Only alias React to Preact in web mode
-        ...(xrEnv !== "avp" && {
-          react: "preact/compat",
-          "react-dom/test-utils": "preact/test-utils",
-          "react-dom": "preact/compat",
-        }),
+        // No more Preact aliases - pure React now
       },
     },
     server: {

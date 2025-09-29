@@ -1,28 +1,26 @@
-import type { ComponentChildren } from 'preact';
-import type { Signal } from '@preact/signals';
-import { lazy, Suspense } from 'preact/compat';
+import type { ReactNode } from 'react';
+import { lazy, Suspense } from 'react';
 import './Counter.css';
 
 const Message = lazy(async () => import('./Message'));
 const Fallback = () => <p>Loading...</p>;
 
 type Props = {
-	children: ComponentChildren;
-	count: Signal<number>;
+	children: ReactNode;
+	count: number;
+	onIncrement: () => void;
+	onDecrement: () => void;
 };
 
-export default function Counter({ children, count }: Props) {
-	const add = () => count.value++;
-	const subtract = () => count.value--;
-
+export default function Counter({ children, count, onIncrement, onDecrement }: Props) {
 	return (
 		<>
-			<div class="counter">
-				<button onClick={subtract}>-</button>
+			<div className="counter">
+				<button onClick={onDecrement}>-</button>
 				<pre>{count}</pre>
-				<button onClick={add}>+</button>
+				<button onClick={onIncrement}>+</button>
 			</div>
-			<Suspense fallback={Fallback}>
+			<Suspense fallback={<Fallback />}>
 				<Message>{children}</Message>
 			</Suspense>
 		</>

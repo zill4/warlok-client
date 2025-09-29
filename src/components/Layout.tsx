@@ -1,10 +1,12 @@
-import { PropsWithChildren } from 'preact/compat';
-import { useEffect } from 'preact/hooks';
+// import { PropsWithChildren } from 'preact/compat';
+// import { useEffect } from 'preact/hooks';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/fonts.css';
 import '../styles/layout.css';
 import { withBasePath } from '../utils/basePath';
 import { useAuth } from './AuthProvider';
+import { PropsWithChildren } from 'react';
+import { useEffect } from 'react';
 
 interface LayoutProps {
   title: string;

@@ -1,19 +1,14 @@
-import { createContext } from 'preact';
-import { useContext, useState, useEffect } from 'preact/hooks';
-import type { ComponentChildren } from 'preact';
-
-interface User {
-  id: string;
-  username: string;
-  email?: string;
-}
+import { createContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import type { User, AuthResponse, AuthFormData } from '../types/shared';
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (username: string, password: string) => Promise<void>;
-  signup: (username: string, email: string, password: string) => Promise<void>;
+  login: (data: AuthFormData) => Promise<void>;
+  signup: (data: AuthFormData) => Promise<void>;
   logout: () => void;
 }
 
@@ -28,7 +23,7 @@ export function useAuth() {
 }
 
 interface AuthProviderProps {
-	children: ComponentChildren;
+	children: ReactNode;
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -40,16 +35,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const checkAuth = async () => {
       try {
         const token = localStorage.getItem('token');
-        if (token) {
-          // In a real app, you'd validate the token with your backend
-          // For now, we'll assume it's valid if it exists
-          const userData = JSON.parse(localStorage.getItem('user') || '{}');
+        const userId = localStorage.getItem('userId');
+        const email = localStorage.getItem('email');
+        const wallet = localStorage.getItem('wallet');
+        const username = localStorage.getItem('username');
+        const bio = localStorage.getItem('bio');
+        const authTimestamp = localStorage.getItem('authTimestamp');
+
+        if (token && userId && email && wallet && authTimestamp) {
+          const userData: User = {
+            id: userId,
+            email: email,
+            wallet: wallet,
+            profile: {
+              id: '',
+              userId: userId,
+              username: username || '',
+              bio: bio || undefined
+            },
+            createdAt: new Date().toISOString()
+          };
           setUser(userData);
         }
       } catch (error) {
         console.error('Auth check failed:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        localStorage.clear();
       } finally {
         setIsLoading(false);
       }
@@ -58,55 +68,90 @@ export function AuthProvider({ children }: AuthProviderProps) {
     checkAuth();
   }, []);
 
-  const login = async (username: string, password: string) => {
+  const login = async (data: AuthFormData) => {
     try {
       setIsLoading(true);
-      // In a real app, you'd make an API call to your backend
-      // For now, we'll simulate a successful login
-      const mockUser: User = {
-        id: '1',
-        username: username,
-        email: `${username}@example.com`,
-      };
+      
+      const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      const mockToken = 'mock-jwt-token';
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
 
-      localStorage.setItem('token', mockToken);
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setUser(mockUser);
+      const userData: AuthResponse = await response.json();
+      
+      // Store auth data in localStorage
+      localStorage.setItem('token', userData.token);
+      localStorage.setItem('userId', userData.user.id);
+      localStorage.setItem('email', userData.user.email);
+      localStorage.setItem('wallet', userData.user.wallet);
+      
+      if (userData.user.profile) {
+        localStorage.setItem('username', userData.user.profile.username);
+        if (userData.user.profile.bio) {
+          localStorage.setItem('bio', userData.user.profile.bio);
+        }
+      }
+      
+      localStorage.setItem('authTimestamp', Date.now().toString());
+      
+      setUser(userData.user);
     } catch (error) {
-      throw new Error('Login failed');
+      throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const signup = async (username: string, email: string, password: string) => {
+  const signup = async (data: AuthFormData) => {
     try {
       setIsLoading(true);
-      // In a real app, you'd make an API call to your backend
-      // For now, we'll simulate a successful signup
-      const mockUser: User = {
-        id: '1',
-        username: username,
-        email: email,
-      };
+      
+      const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/users/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      const mockToken = 'mock-jwt-token';
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
 
-      localStorage.setItem('token', mockToken);
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setUser(mockUser);
+      const userData: AuthResponse = await response.json();
+      
+      // Store auth data in localStorage
+      localStorage.setItem('token', userData.token);
+      localStorage.setItem('userId', userData.user.id);
+      localStorage.setItem('email', userData.user.email);
+      localStorage.setItem('wallet', userData.user.wallet);
+      
+      if (userData.user.profile) {
+        localStorage.setItem('username', userData.user.profile.username);
+        if (userData.user.profile.bio) {
+          localStorage.setItem('bio', userData.user.profile.bio);
+        }
+      }
+      
+      localStorage.setItem('authTimestamp', Date.now().toString());
+      
+      setUser(userData.user);
     } catch (error) {
-      throw new Error('Signup failed');
+      throw error;
     } finally {
       setIsLoading(false);
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.clear();
     setUser(null);
   };
 

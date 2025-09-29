@@ -1,13 +1,13 @@
-import { useState } from 'preact/hooks';
-import type { Card } from '../types/card';
+import { useState } from 'react';
+import type { CardData } from '../types/card';
 import { withBasePath } from '../utils/basePath';
 
 interface CardListProps {
-  cards: Card[];
+  cards: CardData[];
 }
 
 export default function CardList({ cards }: CardListProps) {
-  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
 
     const handleNewCardClick = () => {
         window.location.href = withBasePath('create-card');
@@ -29,7 +29,7 @@ export default function CardList({ cards }: CardListProps) {
             >
               <span class="index">{String(index).padStart(2, '0')}.</span>
               <span class="name">{card.name}</span>
-              <span class="type">{card.type}</span>
+              <span class="type">{card.cardType}</span>
             </div>
           ))}
         </div>

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
-import type { ComponentProps } from 'preact';
+import { useEffect, useRef, useState } from 'react';
+import type { ComponentProps } from 'react';
 import './ChessGame.css';
 
 interface HistoryEntry {

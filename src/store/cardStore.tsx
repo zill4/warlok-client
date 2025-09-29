@@ -25,9 +25,7 @@ const defaultCardData: CardData = {
   image: "",
 };
 
-const CardStoreContext = createContext<CardStoreContextType | undefined>(
-  undefined
-);
+const CardStoreContext = createContext<CardStoreContextType | undefined>(undefined);
 
 export function CardStoreProvider({ children }: { children: ReactNode }) {
   const [store, setStore] = useState<CardStore>({
@@ -36,16 +34,16 @@ export function CardStoreProvider({ children }: { children: ReactNode }) {
   });
 
   const updateCardData = (newCardData: Partial<CardData>) => {
-    setStore((prev) => ({
+    setStore(prev => ({
       ...prev,
-      cardData: { ...prev.cardData, ...newCardData },
+      cardData: { ...prev.cardData, ...newCardData }
     }));
   };
 
   const updateCardImage = (cardImage: string | null) => {
-    setStore((prev) => ({
+    setStore(prev => ({
       ...prev,
-      cardImage,
+      cardImage
     }));
   };
 
@@ -55,12 +53,23 @@ export function CardStoreProvider({ children }: { children: ReactNode }) {
       cardImage: null,
     });
   };
+
+  return (
+    <CardStoreContext.Provider value={{
+      store,
+      updateCardData,
+      updateCardImage,
+      resetCard
+    }}>
+      {children}
+    </CardStoreContext.Provider>
+  );
 }
 
 export function useCardStore() {
   const context = useContext(CardStoreContext);
   if (context === undefined) {
-    throw new Error("useCardStore must be used within a CardStoreProvider");
+    throw new Error('useCardStore must be used within a CardStoreProvider');
   }
   return context;
 }

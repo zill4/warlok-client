@@ -1,5 +1,5 @@
-import { useEffect, useImperativeHandle, useRef, useState } from 'preact/hooks';
-import { forwardRef } from 'preact/compat';
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef } from 'react';
 import '../styles/image-uploader.css';
 
 export type ImageUploaderHandle = {

@@ -1,14 +1,12 @@
-import { useState, useEffect } from 'preact/hooks';
-import { signal } from '@preact/signals';
-import type { AuthFormData, UserData, AuthResponse } from '../types/shared';
+import { useState, useEffect } from 'react';
+import type { AuthFormData } from '../types/shared';
 import { withBasePath } from '../utils/basePath';
-
-const userSignal = signal<UserData | null>(null);
+import { useAuth } from './AuthProvider';
 
 export default function AuthForm() {
     const [isLogin, setIsLogin] = useState(true);
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+    const { login, signup, isLoading } = useAuth();
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -23,7 +21,6 @@ export default function AuthForm() {
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
         setError('');
-        setLoading(true);
 
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
@@ -38,59 +35,20 @@ export default function AuthForm() {
 
         if (!isLogin && data.confirmPassword && !checkPasswordMatch(data.password, data.confirmPassword)) {
             setError('Passwords do not match');
-            setLoading(false);
             return;
         }
 
         try {
-            const endpoint = isLogin ? 'login' : 'signup';
-            const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/users/${endpoint}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (!response.ok) {
-                throw new Error(await response.text());
-            }
-
-            const userData: AuthResponse = await response.json();
-            
-            // Store auth data in localStorage
-            localStorage.setItem('token', userData.token);
-            localStorage.setItem('userId', userData.user.id);
-            localStorage.setItem('email', userData.user.email);
-            localStorage.setItem('wallet', userData.user.wallet);
-            
-            if (userData.user.profile) {
-                localStorage.setItem('username', userData.user.profile.username);
-                if (userData.user.profile.bio) {
-                    localStorage.setItem('bio', userData.user.profile.bio);
-                }
+            if (isLogin) {
+                await login(data);
+            } else {
+                await signup(data);
             }
             
-            localStorage.setItem('authTimestamp', Date.now().toString());
-            
-            // Update userSignal with the complete user data
-            userSignal.value = {
-                id: userData.user.id,
-                email: userData.user.email,
-                wallet: userData.user.wallet,
-                profile: userData.user.profile || {
-                    id: '',
-                    userId: userData.user.id,
-                    username: '',
-                    bio: undefined
-                },
-                authTimestamp: Date.now()
-            };
+            // Redirect to profile after successful auth
             window.location.href = withBasePath('profile');
         } catch (err: unknown) {
             setError((err as Error).message || 'An error occurred');
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -184,7 +142,7 @@ export default function AuthForm() {
 
                     <button
                         type="submit"
-                        disabled={loading}
+                        disabled={isLoading}
                         style={{
                             padding: '0.75rem',
                             background: '#D9D9D9',
@@ -193,10 +151,10 @@ export default function AuthForm() {
                             color: '#000',
                             fontSize: '1rem',
                             cursor: 'pointer',
-                            opacity: loading ? 0.7 : 1,
+                            opacity: isLoading ? 0.7 : 1,
                         }}
                     >
-                        {loading ? 'Loading...' : (isLogin ? 'Login' : 'Sign Up')}
+                        {isLoading ? 'Loading...' : (isLogin ? 'Login' : 'Sign Up')}
                     </button>
 
                     {error && (
@@ -259,4 +217,4 @@ export default function AuthForm() {
     );
 }
 
-export { userSignal }; 
+// userSignal removed - now using React Context via AuthProvider 

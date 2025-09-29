@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "XR_ENV=web vite",
+    "dev": "vite",
     "dev:avp": "XR_ENV=avp vite",
     "build": "vite build",
     "build:avp": "XR_ENV=avp NODE_ENV=production vite build",
@@ -17,13 +17,11 @@
   },
   "dependencies": {
     "@google/model-viewer": "^4.1.0",
-    "@preact/signals": "^2.0.1",
     "@webgpu/types": "^0.1.54",
     "@webspatial/core-sdk": "^1.0.0",
     "@webspatial/react-sdk": "^1.0.0",
     "gsap": "^3.12.7",
     "html2canvas": "^1.4.1",
-    "preact": "^10.25.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.9.3",
@@ -31,7 +29,6 @@
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.7.4",
-    "@preact/preset-vite": "^2.10.2",
     "@types/three": "^0.172.0",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",

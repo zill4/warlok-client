@@ -23,15 +23,18 @@ function LayoutRoute({ title, element }: LayoutRouteProps) {
 
 export default function App() {
   // Simple test for WebSpatial in AVP mode
-  if ((process.env.XR_ENV as any) === 'avp') {
-    return (
-      <div enable-xr style={{ padding: '20px', color: 'white', fontSize: '24px' }}>
-        <h1 enable-xr>🎯 WebSpatial Test</h1>
-        <p enable-xr>If you can see this, WebSpatial rendering is working!</p>
-        <p enable-xr>Environment: {process.env.XR_ENV}</p>
-      </div>
-    );
-  }
+  // if ((process.env.XR_ENV as any) === 'avp') {
+  //   return (
+  //     <Suspense fallback={<div>Loading...</div>}>
+  //     <div enable-xr style={{ padding: '20px', color: 'white', fontSize: '24px' }}>
+  //       <h1 enable-xr>🎯 WebSpatial Test</h1>
+  //       <p enable-xr>If you can see this, WebSpatial rendering is working!</p>
+  //       <p enable-xr>Environment: {process.env.XR_ENV}</p>
+  //       <HomePage />
+  //     </div>
+  //     </Suspense>
+  //   );
+  // }
 
   return (
     <AuthProvider>
