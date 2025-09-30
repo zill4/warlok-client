@@ -61,7 +61,7 @@ export class CardSystem {
   // These values will be recalculated based on window dimensions
   private baseCardYPosition: number;
   // private baseCardXPosition: number = 0;
-  // private aspectRatio: number;
+  private aspectRatio: number = window.innerWidth / window.innerHeight;
   private zoomedCard: THREE.Mesh | null = null;
   private originalScale: THREE.Vector3 | null = null;
   private originalPosition: THREE.Vector3 | null = null;
@@ -482,7 +482,7 @@ export class CardSystem {
         // Load texture with proper settings
         const textureLoader = new THREE.TextureLoader();
         textureLoader.load(
-          withBasePath(`/assets/images/${card.texture}.png`),
+          `${import.meta.env.BASE_URL}/assets/images/${card.texture}.png`,
           (texture) => {
             // Calculate appropriate resolution based on container size
             const container = document.getElementById("game-container");
@@ -569,8 +569,34 @@ export class CardSystem {
   }
 
   public async renderAsync(renderer: WebGPURenderer): Promise<void> {
-    renderer.autoClear = false;
-    await renderer.renderAsync(this.uiScene, this.uiCamera);
+    // Skip rendering if there are no cards to display
+    if (this.cardMeshes.length === 0) {
+      return;
+    }
+
+    // Check if all materials are ready
+    const allMaterialsReady = this.cardMeshes.every((mesh) => {
+      const material = mesh.material as THREE.MeshBasicMaterial;
+      return material && (!material.map || material.map.image);
+    });
+
+    if (!allMaterialsReady) {
+      return; // Skip this frame if materials aren't loaded yet
+    }
+
+    try {
+      renderer.autoClear = false;
+      await renderer.renderAsync(this.uiScene, this.uiCamera);
+    } catch (error) {
+      // Silently handle WebGPU initialization errors
+      // These are expected during the first few frames as buffers are compiled
+      if (error instanceof TypeError && error.message.includes("GPUBuffer")) {
+        // Buffer not ready yet, will try again next frame
+        return;
+      }
+      // Re-throw other errors
+      throw error;
+    }
   }
 
   public render(renderer: THREE.WebGLRenderer): void {

@@ -181,6 +181,8 @@ export class ChessGame {
         antialias: true,
         alpha: true,
       });
+      // Initialize WebGPU renderer
+      await this.renderer.init();
       console.log("Using WebGPU renderer");
     } catch (error) {
       console.log("WebGPU not available, falling back to WebGL");
