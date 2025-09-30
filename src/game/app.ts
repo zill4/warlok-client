@@ -348,7 +348,10 @@ export class ChessGame {
     const loadPromises = types.flatMap((type) => {
       const scale = 0.005;
       return ["white", "black"].map(async (color) => {
-        const path = withBasePath(`/assets/models/${color}_${type}.fbx`);
+        // Use Vite's BASE_URL to handle both regular and AVP paths
+        const path = `${
+          import.meta.env.BASE_URL
+        }/assets/models/${color}_${type}.fbx`;
         try {
           const model = await loader.loadAsync(path);
           model.scale.setScalar(scale);

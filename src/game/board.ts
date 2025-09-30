@@ -12,7 +12,6 @@ import type { Card } from "./card.js";
 import { CardSystem } from "./card.js";
 import { Player, type PlayerColor } from "./player.js";
 import { ChessRules } from "./chess-rules.js";
-import { withBasePath } from "../utils/basePath";
 
 export class BoardManager {
   private scene: THREE.Scene;
@@ -499,7 +498,7 @@ export class BoardManager {
     const textureLoader = new THREE.TextureLoader();
     console.log("placing card texture:", card.texture);
     textureLoader.load(
-      withBasePath(`/assets/images/${card.texture}.png`),
+      `${import.meta.env.BASE_URL}/assets/images/${card.texture}.png`,
       (texture) => {
         material.map = texture;
         material.needsUpdate = true;

@@ -16,4 +16,8 @@ export default defineConfig({
       },
     }),
   ],
+  define: {
+    __BASE_PATH__: JSON.stringify(""),
+  },
+  assetsInclude: ["**/*.fbx"],
 });
