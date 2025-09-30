@@ -1,27 +1,16 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WARLOK</title>
-    <link rel="icon" type="image/png" href="/assets/images/W.png" />
-    <script>
-      // Detect spatial mode and add class immediately
-      (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const pathname = window.location.pathname;
-        const isSpatial = pathname.includes('/webspatial/avp') ||
-                         urlParams.get('spatial') === 'true' || 
-                         urlParams.get('avp') === 'true' ||
-                         navigator.userAgent.includes('VisionOS');
-        
-        if (isSpatial) {
-          document.documentElement.classList.add('is-spatial');
-        }
-      })();
-    </script>
+<%- XR_ENV === 'avp' ? `
+<html lang="en" class="is-spatial">
+  ` : `
+  <html lang="en">
+    ` %>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>WARLOK</title>
+      <link rel="icon" type="image/png" href="/assets/images/W.png" />
      <!-- PWA -->
-     <link rel="manifest" href="/manifest.webmanifest" />
+     <link rel="manifest" href="/manifest.json" />
      <meta name="theme-color" content="#000000" />
      <meta name="apple-mobile-web-app-capable" content="yes" />
      <meta
